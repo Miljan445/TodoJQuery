@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+		<div class="list">
+			<h1>To do list</h1>
+			<h3>Enter a chore</h3>
+			<input type="text" name="chore" placeholder="chore.." id="input">
+			<button type="submit" class="btn">Submit</button>
+		</div>
+	
+	
+	<div class="output">
+		<ul class="choreList">
+		</ul>
+    </div>
+    <h4>Info</h4>
+    <div class="info">
+        <p>Welcome to the ToDo list app, we help you with organizing youre daily chores!</p>
+    </div>
+    <style>
+        body{
+            font-family: arial;
+        }
+        .info{
+            width: 70%;
+            margin: 0 auto;
+            background-color: lightblue;
+            padding: 30px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h4{
+            color: #333;
+            text-align: center;
+            padding: 20px 0 20px 0;
+        }
+        .item{
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid grey;
+            padding:15px 10px 10px 10px;
+            margin-bottom: 15px;
+        }
+
+        .item button{
+            background-color: red;
+            color: white;
+            border: 0;
+            padding: 5px;
+        }
+        .list{
+            background-color: #333;
+            font-family: "arial";
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+        .list button{
+            background-color: transparent;
+            color: white;
+            display: block;
+            border: 0;
+            border: 1px solid white;
+            padding: 5px 10px 5px 10px;
+            margin: 0 auto;
+        }
+        #input {
+            margin-bottom: 20px;
+        }
+    </style>
+<script>
+    $(document).ready(()=>{
+        })
+$(".btn").on("click",()=>{
+    if($("#input").val() === ""){
+        alert("fill out all fields!")
+    }
+    else{
+        $(".output").append(
+        `
+        <li class="item">${$("#input").val()}<button class="remove">X</button></li>
+        `
+    );
+    $("#input").val("");
+    $(".item").click((e)=>{
+    if(e.target.classList.contains("remove")){
+        e.target.parentElement.remove();
+    }
+})
+    }
+
+})
+let open = false;
+$(".info").css({"opacity":"0"});
+$("h4").click(()=>{
+if(open===false){
+  $(".info").css({"opacity":"1",
+                 "transition":"0.5s"
+  })
+  open=true;
+}else{
+    $(".info").css({"opacity":"0",
+                 "transition":"0.5s"
+  })
+  open=false
+}
+})
+</script>
+</body>
+</html>
